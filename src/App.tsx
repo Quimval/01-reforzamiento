@@ -13,6 +13,7 @@ const App = () => {
       {/* <ObjetosLiterales></ObjetosLiterales> */}
       {/* <Funciones></Funciones> */}
       <Contador></Contador>
+      <hr></hr>
     </div>
   )
 }
