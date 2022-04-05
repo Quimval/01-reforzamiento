@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { reqResApi } from '../api/reqRes';
 import { ReqResListado, Usuario } from '../interfaces/reqRes';
+import { useUsuarios } from '../hooks/useUsuarios';
 
 export const Usuarios = () => {
 
-    const [usuarios, setUsuarios] = useState<Usuario[]>([]);
-
-    useEffect(() => {
-        //Llamado al API
-        reqResApi.get<ReqResListado>('/users').then(resp => {
-            setUsuarios(resp.data.data);
-        }).catch(console.log);
-    }, [])
-
+    const { usuarios, paginaAnterior,paginaSiguiente } = useUsuarios();
 
     const renderItem = (usuario: Usuario) => {
 
         return (
             <tr key={usuario.id.toString()}>
                 <td>
-                    <img src={usuario.avatar} alt={usuario.first_name} style={{ width:30,borderRadius:100}}/> 
+                    <img src={usuario.avatar} alt={usuario.first_name} style={{ width: 30, borderRadius: 100 }} />
                 </td>
                 <td>{usuario.first_name} {usuario.last_name}</td>
                 <td>{usuario.email}</td>
@@ -46,7 +39,11 @@ export const Usuarios = () => {
                 </tbody>
             </table>
 
-            <button className='btn btn-primary'>
+            <button className='btn btn-primary' onClick={paginaAnterior}>
+                Anteriores
+            </button>
+            &nbsp;
+            <button className='btn btn-primary' onClick={paginaSiguiente}>
                 Siguientes
             </button>
         </>
