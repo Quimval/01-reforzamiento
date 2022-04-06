@@ -1,5 +1,6 @@
 import { Contador } from "./components/Contador";
 import { ContadorConHook } from "./components/ContadorConHook";
+import { Formularios } from "./components/Formularios";
 import { Login } from "./components/Login";
 import { Usuarios } from "./components/Usuarios";
 import { Funciones } from "./typescript/Funciones";
@@ -18,7 +19,8 @@ const App = () => {
       {/* <Contador></Contador> */}
       {/* <ContadorConHook></ContadorConHook> */}
       {/* <Login></Login> */}
-      <Usuarios></Usuarios>
+      {/* <Usuarios></Usuarios> */}
+      <Formularios></Formularios>
       <hr></hr>
     </div>
   )
